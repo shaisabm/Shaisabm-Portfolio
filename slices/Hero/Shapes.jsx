@@ -62,9 +62,11 @@ function Geometries() {
   ];
 
   const soundEffects = [
-    new Audio("/sounds/knock1.ogg"),
-    new Audio("/sounds/knock2.ogg"),
-    new Audio("/sounds/knock3.ogg"),
+    new Audio("/public/sounds/knock1.ogg"),
+    new Audio("/public/sounds/knock2.ogg"),
+    new Audio("/public/sounds/knock3.ogg"),
+    new Audio("/public/sounds/knock4.ogg"),
+
   ];
 
   const materials = [
