@@ -6,6 +6,26 @@ import Footer from "./components/Footer";
 import clsx from "clsx";
 import {PrismicPreview} from "@prismicio/next";
 import {createClient, repositoryName} from "@/prismicio";
+import { Analytics } from '@vercel/analytics/react';
+
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <head>
+        <title>Next.js</title>
+      </head>
+      <body>
+        {children}
+        <Analytics />
+      </body>
+    </html>
+  );
+}
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
