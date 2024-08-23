@@ -4,40 +4,20 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import clsx from "clsx";
-import {PrismicPreview} from "@prismicio/next";
-import {createClient, repositoryName} from "@/prismicio";
+import { PrismicPreview } from "@prismicio/next";
+import { createClient, repositoryName } from "@/prismicio";
 import { Analytics } from '@vercel/analytics/react';
-
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="en">
-      <head>
-        <title>Next.js</title>
-      </head>
-      <body>
-        {children}
-        <Analytics />
-      </body>
-    </html>
-  );
-}
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
-  const settings = await client.getSingle("settings")
+  const settings = await client.getSingle("settings");
 
   return {
     title: settings.data.meta_title,
     description: settings.data.meta_description,
   };
-  
 }
 
 export default function RootLayout({
@@ -50,9 +30,10 @@ export default function RootLayout({
       <body className={clsx(urbanist.className, "relative min-h-screen")}>
         <Header />
         {children}
-        <Footer/>
+        <Footer />
         <div className="absolute inset-0 -z-50 max-h-screen background-gradient"></div>
         <div className="absolute pointer-events-none inset-0 -z-40 h-full bg-[url('/noisetexture.jpg')] opacity-20 mix-blend-soft-light"></div>
+        <Analytics />
       </body>
       <PrismicPreview repositoryName={repositoryName} />
     </html>
